@@ -1,0 +1,28 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #customerForm="ngForm">
+      <div class="form-group">
+        <label for="name">First Name</label>
+        <input type="text" [(ngModel)]="customer.firstName"
+               class="form-control"
+               id="name"
+               name="name"
+               placeholder="Enter your name"
+               required #firstName="ngModel">
+      </div>
+      <div [hidden]="!firstName.pristine" class="alert alert-danger">First name is required</div>
+      <div class="form-group">
+        <label for="email">Last Name</label>
+        <input type="text" [(ngModel)]="customer.lastName"
+               class="form-control"
+               id="email"
+               name="email"
+               placeholder="Enter your last name"
+               required #lastName="ngModel">
+        <div [hidden]="!lastName.pristine" class="alert alert-danger">Last name is required</div>
+      </div>
+      <button type="submit" [disabled]="!customerForm.form.valid"
+              class="btn btn-info">Submit</button>
+    </form>
+  </div>
+</div>
